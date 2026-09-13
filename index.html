@@ -7,11 +7,57 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Шапка з назвою і навігацією -->
-    <!-- Блок фільтра за датою/ категорією -->
-    <!--Список подій(картки)-->
-    <!-- Блок деталей обраної події -->
-    <!-- Підвал -->
+    <header>
+        <h1>Афіша подій міста</h1>
+        <nav>
+            <a href="#events">Події</a>
+            <a href="#selected-event">Обрана подія</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="filter">
+            <h2>Фільтр за датою та категорією</h2>
+            <form>
+                <div>
+                    <label for="date-filter">Дата:</label>
+                    <input type="date" id="date-filter" name="date">
+                </div>
+                <div>
+                    <label for="category-filter">Категорія:</label>
+                    <select id="category-filter" name="category">
+                        <option value="all">Усі категорії</option>
+                        <option value="concerts">Концерти</option>
+                        <option value="theater">Театр</option>
+                        <option value="exhibitions">Виставки</option>
+                    </select>
+                </div>
+            </form>
+        </section>
+        
+        <section id="events">
+            <h2>Події</h2>
+            <article>
+                <img src="https://via.placeholder.com/150" alt="Постер культурної події" width="150">
+                <h3>Назва події 1</h3>
+                <p>Короткий опис першої культурної події у місті.</p>
+            </article>
+            <article>
+                <h3>Назва події 2</h3>
+                <p>Короткий опис другої культурної події у місті.</p>
+            </article>
+        </section>
+    </main>
+
+    <aside id="selected-event">
+        <h2>Деталі обраної події</h2>
+        <p>Тут відображається детальна інформація про подію, яку ви обрали зі списку.</p>
+    </aside>
+
+    <footer>
+        <p>Контакти організаторів: info@cityevents.ua | ©; 2026</p>
+    </footer>
+    
     <script src="js/app.js"></script>
 </body>
 </html>
