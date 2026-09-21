@@ -64,11 +64,11 @@ article {
 
 
 article.event-theatre {
-    border-left: 4px solid #73c2f7; /* фіолетовий для вистав/театру */
+    border-left: 4px solid #a511e5; /* фіолетовий для вистав */
 }
 
 article.event-music {
-    border-left: 4px solid #3182ce; /* Синій для концертів */
+    border-left: 4px solid #f01aa5; /* рожевий для концерт */
 }
 
 article.event-art {
