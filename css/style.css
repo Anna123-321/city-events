@@ -1,3 +1,24 @@
+/* ==========================================================================
+   ОБҐРУНТУВАННЯ ДИЗАЙН-РІШЕНЬ (Практична робота №5, Варіант 5)
+   
+   1. Чітка вимога:
+      - Типографічна шкала з 3+ рівнів: h1 = 32px (>=28px), h2 = 22px (>=20px), 
+        h3 = 18px, основний текст p = 16px (1rem), висота рядка line-height = 1.5.
+      
+   2. Нечітка вимога («має передавати атмосферу свята»):
+      - Замість введення сторонніх теплих кольорів збережено естетику контрастної синьої 
+        палітри міста. Святковий настрій передано через ефект холодного «крижаного» неону: 
+        чистий білий заголовок h1 доповнено багатошаровим сяйвом text-shadow блакитних 
+        відтінків (#60a5fa та #38bdf8), що асоціюється з прожекторами вечірньої сцени, 
+        святковою ілюмінацією та зимовими фестивалями.
+      - Коефіцієнт контрасту білого тексту заголовка на фоні #151543 становить 16.5:1, 
+        що з великим запасом перевищує норму WCAG AAA (7:1).
+      - Категорії подій виділено помітними кольоровими бейджами із закругленням 
+        (пігулками), а дату оформлено у виразний напівжирний блок із високим контрастом.
+      - Картки мають чистий білий фон із темним контрастним текстом #0c0335 (контраст > 14:1), 
+        що забезпечує бездоганну читабельність і відсутність візуального шуму.
+   ========================================================================== */
+
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -5,22 +26,49 @@
 body {
     margin: 0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-size: 1rem;
+    font-size: 16px;   
     line-height: 1.5;
     color: #0c0335;
     background-color: #9ecaf6;
 }
 
-/* Запобігання переповненню зображень */
+/*Запобігання переповненню зображень */
 img {
     max-width: 100%;
     height: auto;
     display: block;
-    border-radius: 4px;
+    border-radius: 6px;
     margin-bottom: 0.75rem;
 }
 
-/* Стилізація header */
+h1 {
+    font-size: 32px;         
+    line-height: 1.2;
+    margin: 0;
+}
+
+h2 {
+    font-size: 22px;     
+    line-height: 1.3;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    color: #0c0335;
+}
+
+h3 {
+    font-size: 18px;
+    line-height: 1.35;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: #0f172a;
+}
+
+p {
+    font-size: 16px;       
+    margin: 0 0 0.5rem 0;
+}
+
+/*Стилізація header*/
 header {
     background-color: #151543;
     padding: 1.5rem 2rem;
@@ -32,29 +80,32 @@ header {
 }
 
 header h1 {
-    margin: 0;
-    font-size: 1.75rem;
-    color: #ffffff;  
+    color: #ffffff;
+    /* Святкове сяйво фестивальних прожекторів */
+    text-shadow: 0 0 10px rgba(96, 165, 250, 0.8), 0 0 22px rgba(56, 189, 248, 0.5);
+    letter-spacing: 0.5px;
 }
 
 header nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 1.25rem;
 }
 
 header nav a {
-    color: #1e9ce6;
+    color: #38bdf8;
     text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.2s ease;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
 header nav a:hover {
-    color: #54b7f4; 
+    color: #bae6fd; 
+    text-shadow: 0 0 8px rgba(186, 230, 253, 0.6);
 }
 
-/* Загальний контейнер розмітки */
+/*Загальний контейнер розмітки*/
 .layout {
     max-width: 1200px;
     margin: 0 auto;
@@ -63,7 +114,7 @@ header nav a:hover {
 
 main {      
     margin: 0;            
-    padding: 0 1rem; /* Відступ від країв екрана на мобільних пристроях */
+    padding: 0 1rem;
 }
 
 section {
@@ -82,69 +133,124 @@ section {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    font-size: 16px;
 }
 
 #filter input,
 #filter select {
-    padding: 4px 8px;
-    border-radius: 4px;
+    padding: 6px 10px;
+    border-radius: 6px;
     border: 1px solid #718096;
-    font-size: 0.95rem;
+    background-color: #ffffff;
+    font-size: 15px;
+    color: #0c0335;
 }
 
-/* Галерея карток */
+/*Галерея карток подій */
 .cards {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 20px;
 }
 
 article {
     background-color: #ffffff;
     padding: 16px;            
-    margin-bottom: 0;      
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    border-left: 4px solid #4a5568; 
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(15, 23, 42, 0.08);
+    border-left: 5px solid #4a5568; 
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+article:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.12);
+}
+
+/* Тематичні кольорові смуги категорій */
 article.event-theatre {
-    border-left: 4px solid #a511e5; /* фіолетовий для вистав */
+    border-left-color: #a511e5; /* фіолетовий для вистав */
 }
 
 article.event-music {
-    border-left: 4px solid #f01aa5; /* рожевий для концертів */
+    border-left-color: #f01aa5; /* рожевий для концертів */
 }
 
 article.event-art {
-    border-left: 4px solid #38a169; /* зелений для виставок */
+    border-left-color: #38a169; /* зелений для виставок */
 }
 
-article h2, article h3 {
-    margin-top: 0;
+/* Контейнер метаданих картки */
+.card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 0.25rem;
     margin-bottom: 0.5rem;
+}
+
+/* Кольоровий бейдж категорії події */
+.badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 9999px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.badge-theatre {
+    background-color: #f3e8ff;
+    color: #7e22ce; /* Контраст 6.8:1 */
+}
+
+.badge-music {
+    background-color: #fce7f3;
+    color: #be185d; /* Контраст 5.4:1 */
+}
+
+.badge-art {
+    background-color: #dcfce7;
+    color: #15803d; /* Контраст 5.2:1 */
+}
+
+/* дата події */
+.event-date {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0f172a;
+    background-color: #f1f5f9;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
 }
 
 aside {
     border: 1px solid #cbd5e1; 
-    padding: 16px;            
+    padding: 20px;            
     background-color: #82b7ed; 
-    border-radius: 6px;
-    margin: 1.5rem 1rem 0 1rem; /* Додано бічні поля для вирівнювання з main */
+    border-radius: 8px;
+    margin: 1.5rem 1rem 0 1rem;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
 }
 
 footer {
     padding: 1.5rem 2rem;
     text-align: center;
-    font-size: 0.875rem;      
-    color: #3b5278;       
+    font-size: 14px;      
+    color: #1e3a5f;       
     border-top: 1px solid #e2e8f0;
 }
 
-/* Планшет (від 600px) */
+/* Планшет (від 600px)*/
 @media (min-width: 600px) {
     header h1 {
-        font-size: 2rem;
+        font-size: 34px;
     }
 
     .cards {
@@ -158,7 +264,7 @@ footer {
     }
 }
 
-/* Десктоп (від 1024px) */
+/* Десктоп (від 1024px)*/
 @media (min-width: 1024px) {
     header {
         flex-direction: row;
@@ -170,13 +276,13 @@ footer {
     .layout {
         display: grid;
         grid-template-columns: 2fr 1fr;
-        gap: 24px;
+        gap: 28px;
         align-items: start;
         padding: 2rem 1.5rem;
     }
 
     main {
-        padding: 0; /* Внутрішні відступи бере на себе grid у .layout */
+        padding: 0;
     }
 
     .cards {
@@ -185,5 +291,7 @@ footer {
 
     aside {
         margin: 0;
+        position: sticky;
+        top: 24px;
     }
 }
